@@ -1,0 +1,60 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Whastapp from "../components/Whastapp.astro";
+import "@fontsource-variable/outfit";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/PsicoVida.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<div class="cuerpo">
+		<Header />
+		<body>
+			<slot />
+		</body>
+		<Whastapp />
+		<Footer />
+	</div>
+</html>
+<style is:global>
+	html {
+		font-family: "Outfit Variable", sans-serif;
+		background-size: 224px;
+	}
+	body {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		background-color: #e5e7eb;
+	}
+
+	.cuerpo {
+		max-width: 1280px;
+		margin: auto;
+	}
+
+	h3,
+	h2,
+	h1,
+	h4,
+	p {
+		padding: 0;
+		margin: 0;
+	}
+</style>

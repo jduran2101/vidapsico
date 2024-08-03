@@ -1,0 +1,182 @@
+---
+interface Props {
+	svg: string;
+	title: string;
+	body: string;
+}
+
+const { svg, title, body } = Astro.props;
+---
+
+<article>
+	<div class="first">
+		<span>
+			<img src={svg} alt="" />
+		</span>
+
+		<div class="parrafo">
+			<h4>{title}</h4>
+			<p>{body}</p>
+			<a href="/areas">Mas 🡳</a>
+		</div>
+	</div>
+</article>
+
+<style>
+	.first {
+		position: relative;
+		z-index: 2;
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 40px 5px 40px 5px;
+		width: 284px;
+		height: 254px;
+	}
+	article {
+		position: relative;
+		overflow: hidden;
+		width: 290px;
+		height: 260px;
+		border-radius: 40px 5px 40px 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	article::before {
+		content: "";
+		position: absolute;
+		background: linear-gradient(45deg, #fff, #7fc7af);
+		inset: -60px 60px;
+		transition: 0.8s;
+		animation: anime 8s linear infinite;
+	}
+	article::after {
+		content: "";
+		position: absolute;
+		background-color: #fff;
+		border-radius: 40px 5px 40px 5px;
+		inset: 8px;
+	}
+	@keyframes anime {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+	span {
+		width: 80px;
+		height: 80px;
+		background-color: #fff;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 10px 0;
+		position: relative;
+		z-index: 2;
+	}
+	img {
+		width: 60px;
+		position: relative;
+		z-index: 2;
+	}
+
+
+	.parrafo {
+		z-index: 2;
+		padding: 5px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		h4 {
+			position: relative;
+			color: #7fc7af;
+			padding-bottom: 10px;
+			font-size: 24px;
+			font-weight: 300;
+			text-align: center;
+			z-index: 2;
+		}
+		p {
+			color: #7fc7af;
+			font-size: 15px;
+			font-weight: 300;
+			padding-top: 5px;
+			text-align: center;
+		}
+		a {
+			text-align: center;
+			text-decoration: none;
+			margin-top: 10px;
+			border-radius: 10px;
+			padding: 5px 8px;
+			background-color: #7fc7af;
+			color: #fff;
+			font-size: 14px;
+		}
+	}
+	@media (max-width: 900px) {
+		article {
+			width: 375px;
+			height: 155px;
+			position:relative;
+			display: flex;
+			
+			border-radius: 0;
+		}
+		article::before {
+			content:"" ;
+			position:absolute;
+			inset: -135px 140px;
+			transition: 0.8s;
+		
+		}
+		article::after {
+			inset:16px;
+		}
+		
+         
+	   
+
+
+		.first {
+			border-radius: 0;
+			width: 370px;
+			height: 149px;
+			display:flex;
+			flex-wrap: wrap ;
+		}
+		span  {
+			width: 25%;
+			height: 140px;
+			display:flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.parrafo {
+		   width: 75%;
+		   
+		   h4 {
+			font-size:20px;
+		   }
+		   p {
+			font-size:14px;
+			text-align:start;
+		   }
+		   a {
+			border-radius: 0 ;
+			border-bottom: 2px solid #7fc7af ;
+			background-color:#fff;
+			color:#7fc7af;
+			font-size:12px;
+		   }
+		}
+	}
+		
+		
+</style>

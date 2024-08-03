@@ -1,0 +1,118 @@
+---
+import { fade } from "astro:transitions"
+import Agendar from "./sobremi/Agendar.astro"
+---
+
+<section>
+    <div class="cuerpouno">
+        <article transition:animate={fade({duration:"1s"})}class="info">
+            <h1>Transformemos juntos en <span>tu bienestar</span></h1>
+            <p>Soy Rocio Vida Licenciada en Psicologia</p>
+            <p>estoy aca para transformar tu vida desde el interior...</p>
+            <div class="buton">
+                <Agendar />
+                <a>Sobre mi</a>
+            </div>
+                
+
+        </article>
+        <article class="img">
+            <img src="/img/img-Inicio1.png" alt="">
+
+        </article>
+    </div>
+</section>
+
+<style>
+    section{
+        margin: 100px 0;
+    }
+    .cuerpouno{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .info h1 {
+        font-size: 58px ;
+        font-weight: 200;
+        padding-bottom: 30px;
+        span {
+            color: #7fc7af;
+        }
+    }
+    .info p {
+        
+        font-size: 28px;
+        font-weight: 200;
+    }
+    .info .buton {
+        padding-top: 30px;
+        a {
+            padding: 15px 15px;
+            border-radius: 15px;
+            border: 2px solid #7fc7af;
+            color: #7fc7af;
+            background-color: #fff;
+            font-size: 18px;
+            font-weight: 400;
+            margin-right: 15px;
+            transition: .3s all ease-in;
+            cursor: pointer;
+        }
+       a:hover {
+        background: linear-gradient(to bottom, rgba(0, 176, 155, 0.5), rgba(150, 201, 61, 1));
+        color: #fff;
+       }
+    }
+  
+   
+    
+       
+   
+   
+ 
+
+
+
+
+	
+    @media (max-width: 900px){
+        section {
+            margin: 100px 0 50px 0;
+        }
+        .cuerpouno {
+            width: 98%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .img {
+           order: -1;
+           img {
+            width: 100%;
+            mask-image: linear-gradient(black 90%, transparent);
+           }
+        }
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .info h1 {
+            font-size: 38px;
+            text-align: center;
+        }
+        .info p {
+            font-size: 23px;
+            text-align: center;
+        }
+            
+            
+    }
+</style>

@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CardUno from '../components/CardUno.astro';
+import CardDos from '../components/CardDos.astro';
+import CardTres from '../components/CardTres.astro';
+import CardCuatro from '../components/CardCuatro.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<CardUno />
+		<CardDos />
+		<section>
+			<Card 
+			 svg='/img/Depression.svg'
+			 title='Trastorno de la ansiedad'
+			 body='Ansiedad social, trastorno de panico, ansiedad de desempeño, fobias especificas'
+			 
+			/>
+			<Card
+			svg='/img/Hug.svg'
+			title='Terapia de Parejas'
+			body='Tratamiento enfocado en la empatia, la compresión, la comunicación que afectan la relación' 
+			/>
+			<Card 
+			svg='/img/Axiety.svg'
+			title='Terapia de Depresión'
+			body='Tratamiento enfocado en mejorar la calidad de vida y la percepción del si mismo'
+			/>
+		</section>
+		<CardTres />
+		<CardCuatro />
+	</main>
+</Layout>
+
+<style>
+	section{
+		padding-bottom: 30px;
+		width: 90%;
+		margin: auto;
+		display: flex;
+		justify-content: space-evenly;
+		gap: 15px;
+	}
+	@media (max-width: 900px) {
+		section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+</style>

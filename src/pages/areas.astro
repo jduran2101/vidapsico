@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Servicios from "../components/sobremi/Servicios.astro";
+import { fade } from "astro:transitions";
+---
+
+<Layout title="Areas de terapia">
+    <main>
+        <section class="first">
+            <div class="container">
+                <div
+                    transition:animate={fade({ duration: "2s" })}
+                    class="infoo"
+                >
+                    <h1>TERAPIA</h1>
+                    <p>
+                        Proporciono un espacio seguro y confidencial en el que
+                        puedes expresarte libremente y trabajar para un cambio
+                        positivo.<br />
+                        Mediante ciertos métodos de tratamientos puedo ayudarte a
+                        conseguir mayor bienestar, satisfacción y equilibrio emocional.<br
+                        />
+                        Mi labor es acompañarte a que seas el PROTAGONISTA DE TU
+                        VIDA...
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="second">
+            <Servicios />
+        </section>
+    </main>
+</Layout>
+<style>
+    .first {
+        margin: 120px 0 60px auto;
+        width: 100%;
+    }
+    .first .container {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 300px;
+        margin: auto;
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(110, 125, 97, 0.4)
+            ),
+            url(/img/upset-and.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .container .infoo {
+        width: 50%;
+    }
+
+    .first .container h1 {
+        font-size: 30px;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+    }
+    .first .container p {
+        color: #fff;
+        font-size: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+    }
+
+    .second {
+        width: 90%;
+        margin: 25px auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    @media (max-width: 900px) {
+        .first .container {
+            width: 100%;
+            height: 400px;
+        
+        }
+        .container .infoo {
+            width: 90%;
+        }
+        .container h1 {
+            font-size: 24px;
+        }
+        .container p {
+            font-size: 14px;
+        }
+    }
+</style>

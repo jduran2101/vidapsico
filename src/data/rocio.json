@@ -1,0 +1,105 @@
+{
+    "servicios": [
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526935/rocio/psicologos-depresion2_sv7wsr.webp",
+            "titulo": "Depresión",
+            "descripcion": " Es un trastorno que puede afectar a cuaquiera independientemente de su edad, cultura, nivel educativo o económico. Incide en el estado de ánimo generando tristeza desanimo o frustración que afectan la vida diaria."
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526935/rocio/psicologos-madrid-trastorno-de-ansiedad_vhzfb5.webp",
+            "titulo": "Ansiedad",
+            "descripcion": "Es una respuesta emocional a situaciones percibidas como peligrosas. Impacta en nuestro pensamiento y se expresa mediante síntomas físicos y cognitivos."
+
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526937/rocio/medico-que-es-terapia-de-pareja-3_cxtmzd.webp",
+            "titulo": "Terapia de Parejas",
+            "descripcion": "Los desacuerdos de la vida cotidiana pueden impactar en la dinámica de pareja, deteriorando el vínculo."
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526939/rocio/crisis-vitales2_jzhb8f.webp",
+            "titulo": "Crisis Vitales",
+            "descripcion": "Son sucesos determinados que aparecen en el transcurrir de la vida misma e impactan en el estado de ánimo."
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526938/rocio/desarrollo-personal_tkndnx.webp",
+            "titulo": "Desarrollo Personal",
+            "descripcion": "Descubrimiento y desarrollo de habilidades personales que te permiten alcanzar tus metas y objetivos."
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526936/rocio/padres1_wp8piu.webp",
+            "titulo":"Orientación a Padres",
+            "descripcion": "Espacio de acompañamiento a los padres que desean desarrollar herramientas para una crianza asertiva y fortalecer el vínculo."
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526937/rocio/estress_h5c1cs.webp",
+            "titulo":"Estress Laboral",
+            "descripcion": "Percepción de tensión y excesiva exigencia en un entorno laboral. Afecta el desempeño profesional y el estado de ánimo."
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526935/rocio/TERAPIA_FAMILIA_drgpa8.webp",
+            "titulo":"Terapia Familiar",
+            "descripcion":"Intervenciones en el sistema dinámico vincular familiar que promuevan relaciones mas saludables, basadas en el respeto, la confianza y la comunicación asertiva."
+        },
+        {
+            "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526934/rocio/miedos-y-fobias_u4p5xq.webp",
+            "titulo":"Terapia para Fobias",
+            "descripcion": "Tratamiento específico basado en la exposición a las situaciones u objetos ansiógenos mediante el acompañamiento y orientación terapeutica."
+        }
+    ],
+    "cursos": [
+        {
+            "instituto":"CETIC 2023",
+            "tipo": "Curso y Certificacion",
+            "curso":"Teoría y Técnica de la Terapia Cognitivo Conductal"
+        },
+        {
+            "instituto":"FUNDACION IGB 2024",
+            "tipo":"Curso y Certificacion",
+            "curso":"Formación en Psicoterapia de Parejas"
+        },
+        {
+            "instituto":"UBA 2024",
+            "tipo":"Curso y Certificacion",
+            "curso":"Introducción a la Terapia Cognitiva con niños y adolescentes"
+        },
+        { 
+            "instituto":"CEA SALUD 2023",
+            "tipo":"Curso y Certificacion",
+            "curso":"Abordaje Cognitivo Conductal en niños y adolescentes"
+        },
+        {
+            "instituto":"UBA 2018",
+            "tipo":"Curso y Certificacion",
+            "curso":"Curso Intensivo de acompañamiento terapéutico"
+        },
+        {
+            "instituto":"UBA 2021",
+            "tipo":"Curso y Certificacion",
+            "curso":"Curso de Integración escolar"
+        },
+        {
+            "instituto":"FUNDACIÓN FORO 2024",
+            "tipo":"Curso y Certificacion",
+            "curso":"Diplomatura en trastornos de Ansiedad "
+        },
+        {
+            "instituto":"INSTITUCIÓN ULLOA 2020",
+            "tipo":"Prácticas Profesionales",
+            "curso":"Práctica Profesional Supervisada bimestral, Especialidad adultos"
+        },
+       
+       
+        {
+            "instituto":"J.T. BORDA 2022",
+            "tipo":"Prácticas Profesionales",
+            "curso":"Clínica en Salud Mental / Hospital Interdisciplinario Psicoasistencial"
+        },
+        {
+            "instituto":"UBA 2022",
+            "tipo":"Voluntariados",
+            "curso":"Ayudante de catedrá, materia Teoría y Técnica de Exploración y Diagnóstico II"
+        }
+    ]
+}
+            

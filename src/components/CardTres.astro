@@ -1,0 +1,166 @@
+---
+---
+
+<section>
+    <div class="rocio">
+        <img src="/img/img-Inicio2.png" alt="">
+        <p>¿Listo para empezar tu transformacion?</p>
+        <div class="linea"></div>
+    </div>
+    <div class="cuerpodos">
+        <article class="img">
+            <img src="/img/img21.webp" alt="">
+
+        </article>
+        <article class="info">
+            <h4>Mi estilo terapeutico</h4>
+            <h2>Terapia cognitiva conductal</h2>
+            <p>Se orienta a la busqueda de patrones de conducta y pensamiento
+               que limitan la vida o causan gran<br> sufrimiento.
+            </p>
+            <br>
+            <p>Como terapeuta desde una escucha activa y un trabajo colaborativa
+               encontraremos juntos esas creencias o conductas que sostienen el problema.
+
+            </p>
+
+        </article>
+    </div>
+</section>
+
+<style>
+    section{
+        margin: 50px 0;
+        position: relative;
+        z-index: 0;
+    }
+    section .rocio {
+        position: absolute;
+        background-color: #fff;
+        left: 50px;
+        top: 25px;
+        z-index: 1111;
+        width: 170px;
+        height: 180px;
+        border-radius: 15px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+            font-size: 14px;
+            padding: 5px;
+            text-align: center;
+        }
+        img {
+            width: 90px;
+        }
+        .linea {
+            width: 60px;
+            height: 4px;
+            background-color: #7fc7af;
+        }
+
+    }
+
+    .cuerpodos {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px;
+    }
+        
+        
+    .cuerpodos .img {
+        width: 480px;
+        height: 450px;
+        transition: 0.5s ease-in-out;
+        animation: appear linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+    }
+    @keyframes appear {
+    from {
+      opacity: 0;
+      /*scale: 0.5;*/
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      /*scale: 1;*/
+      transform: translateX(0px);
+    }
+    
+  }
+
+
+
+
+
+    .img img {
+        width: 100%;
+        height: 100%;
+        border-radius: 90px 1px 90px 1px;
+        box-shadow: rgba(30, 241, 157, 0.3) 0px 20px 38px, rgba(30, 241, 157, 0.3) 0px 20px 48px;
+        
+    }
+    .info {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        
+        h4 {
+            font-size: 24px;
+            color: #7fc7af;
+        }
+        h2 {
+            font-size: 48px;
+            font-weight: 200;
+            padding: 15px 0;
+            
+        }
+        p {
+            font-size: 20px;
+            font-weight: 200;
+            padding: 10px;
+        }
+    }
+    @media (max-width: 900px) {
+        section {
+            margin: 15px 0 50px 0;
+        }
+        .cuerpodos {
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cuerpodos .img {
+            
+            width: 98%;
+            height: 400px;
+        } 
+        .cuerpodos .info {
+            width: 98%;
+            order: -1;
+            padding-top: 25px;
+        }
+        section .rocio {
+            position: absolute;
+            top: 500px;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+            h2 {
+                font-size: 36px;
+                text-align: center;
+            }
+        }
+       
+    }
+
+</style>

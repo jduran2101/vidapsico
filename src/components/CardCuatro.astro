@@ -1,0 +1,79 @@
+---
+---
+<section>
+  <div class="first">
+      <div class="cambio">
+           <h4><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-checkbox">
+             <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+             El cambio
+            </h4>
+            <p>Lo iremos logrando a partir de diferentes actividades que incluyen
+                experiencias creativas, situaciones de exposicion o cuestionamiento de aquellos
+                pensamientos difuncionales.
+            </p>
+
+        </div>
+        <div class="cambio">
+            <h4><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-checkbox">
+             <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+             El objetivo
+            </h4>
+           <p>Acompañarte a generar ideas mas flexibles y adaptativas que te permiten
+             lograr lo que te propongas.
+           </p>
+       </div>
+    </div>
+</section>
+
+
+
+
+<style>
+    section {
+        margin: 30px  0 80px 0;
+    }
+    .first {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        gap: 50px;
+        animation: slide both;
+        animation-timeline: view();
+        animation-range: contain 0 % contain 50%;
+    }
+    @keyframes slide {
+        from {
+            opacity: 0.1;
+            transform: translateY(5vh);
+        }
+        
+    }
+
+    .cambio {
+        width: 50%;
+        h4 {
+        color: #7fc7af;
+        font-size: 24px;
+        padding-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            font-weight: 200;
+        }
+    }
+    @media (max-width: 900px) {
+        .first {
+            width: 98%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .cambio {
+            width: 95%;
+
+        }
+    }
+
+</style>

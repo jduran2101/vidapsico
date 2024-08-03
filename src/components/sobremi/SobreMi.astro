@@ -1,0 +1,230 @@
+---
+import Agendar from "./Agendar.astro";
+import {slide} from "astro:transitions"
+---
+
+<section>
+    <div class="cuerpouno">
+        <div class="info">
+            <h3>ROCIO RUTH VIDA <span>&#160;</span></h3>
+            <h4>Matricula 80364</h4>
+            <h1>Lcda. en Psicologia</h1>
+            <p>Universidad de Buenos Aires</p>
+
+            <Agendar />
+        </div>
+        <div transition:animate={slide({duration : "1s"})} class="imagen">
+            <img src="/img/rocio1.webp" alt="" />
+        </div>
+    </div>
+</section>
+<section class="dos">
+    <div class="info2">
+        <div class="ro">
+            <img src="/img/rocio2.webp" alt="" />
+        </div>
+        <div class="perfil">
+            <h3>Mi Compromiso !!!</h3>
+            <p>
+                Como profesional ofrezco compromiso y resposabilidad con quienes
+                deciden iniciar con su espacio terapeutico.
+            </p>
+            <p>
+                Mi labor implica escucha activa, contencion y respeto ante las
+                diversas problematicas, para que juntos transformemos el
+                malestar actual en una realidad mas saludable.
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        margin: 100px 0;
+    }
+    .cuerpouno {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+    .cuerpouno .info {
+        width: 35%;
+        text-align: center;
+        line-height: 40px;
+        h3 {
+            position: relative;
+
+            font-size: 38px;
+            color: #7fc7af;
+            font-weight: 400;
+        }
+        h1 {
+            font-size: 36px;
+            color: #7fc7af;
+            font-weight: 400;
+        }
+        h4 {
+            color: #3c3b3b;
+            font-size: 24px;
+            font-weight: 400;
+        }
+        p {
+            font-size: 24px;
+            color: #3c3b3b;
+            padding-bottom: 30px;
+        }
+    }
+
+    .info h3 span {
+        position: absolute;
+        width: 0;
+        right: 0;
+        background-color: #e5e7eb;
+        border-left: 3px solid #7fc7af;
+        animation: maquina 5s infinite alternate steps(21);
+    }
+    @keyframes maquina {
+        from {
+            width: 100%;
+        }
+        to {
+            width: 0;
+        }
+    }
+
+    .cuerpouno .imagen {
+        width: 50%;
+        img {
+            width: 80%;
+            height: 600px;
+            clip-path: polygon(11% 0, 100% 0%, 90% 100%, 0% 100%);
+        }
+    }
+    .dos {
+        margin: 50px 0;
+        width: 100%;
+        background: #348f50; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+            to right,
+            #56b4d3,
+            #348f50
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+            to right,
+            #56b4d3,
+            #348f50
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .info2 {
+        width: 70%;
+        height: 400px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .info2 .ro {
+        width: 50%;
+        
+
+        img {
+            width: 70%;
+            height: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 35px #e6eee7;
+        }
+    }
+    .perfil {
+        border-radius: 15px;
+
+        border: 5px double #fff;
+        /* box-shadow: 10px 10px 0 1px #ceeef8,
+        10px 10px 0 0 #fff;*/
+        width: 35%;
+        padding: 25px;
+        clip-path: polygon(
+            0 0,
+            78% 0,
+            100% 21%,
+            100% 70%,
+            100% 100%,
+            21% 100%,
+            0 78%,
+            0% 30%
+        );
+        h3 {
+            font-size: 28px;
+            color: #fff;
+            padding-bottom: 10px;
+            text-decoration: underline;
+            text-decoration-color: #fff;
+            text-decoration-thickness: 3px;
+        }
+        p {
+            color: #fff;
+
+            font-size: 16px;
+            line-height: 25px;
+            text-align: start;
+        }
+    }
+    @media (max-width: 900px) {
+        section {
+            margin: 120px 0 50px;
+        }
+        .cuerpouno {
+            width: 98%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cuerpouno .info {
+            width: 98%;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        .cuerpouno .imagen {
+            width: 98%;
+            display: none;
+        }
+        .dos {
+            margin-top: 80px;
+            
+        }
+        .info2 {
+            width: 98%;
+            height: 725px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+            
+            
+        .info2 .ro {
+            width: 320px;
+            
+            img {
+               width: 100%;
+            }
+        }
+        .info2 .perfil {
+            width: 325px;
+            height: 220px;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+        
+
+            p {
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+    }
+</style>
