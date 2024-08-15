@@ -39,48 +39,48 @@
         {
             "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526935/rocio/TERAPIA_FAMILIA_drgpa8.webp",
             "titulo":"Terapia Familiar",
-            "descripcion":"Intervenciones en el sistema dinámico vincular familiar que promuevan relaciones mas saludables, basadas en el respeto, la confianza y la comunicación asertiva."
+            "descripcion":"Intervenciones en el sistema dinámico vincular familiar que promueven relaciones más saludables, basadas en el respeto, la confianza y la comunicación asertiva."
         },
         {
             "imagen":"https://res.cloudinary.com/de9lduii3/image/upload/v1719526934/rocio/miedos-y-fobias_u4p5xq.webp",
             "titulo":"Terapia para Fobias",
-            "descripcion": "Tratamiento específico basado en la exposición a las situaciones u objetos ansiógenos mediante el acompañamiento y orientación terapeutica."
+            "descripcion": "Tratamiento específico basado en la exposición, acompañamiento y orientación terapeutica."
         }
     ],
     "cursos": [
         {
             "instituto":"CETIC 2023",
-            "tipo": "Curso y Certificacion",
+            "tipo": "Curso y Certificación",
             "curso":"Teoría y Técnica de la Terapia Cognitivo Conductal"
         },
         {
-            "instituto":"FUNDACION IGB 2024",
-            "tipo":"Curso y Certificacion",
+            "instituto":"FUNDACIÓN IGB 2024",
+            "tipo":"Curso y Certificación",
             "curso":"Formación en Psicoterapia de Parejas"
         },
         {
             "instituto":"UBA 2024",
-            "tipo":"Curso y Certificacion",
+            "tipo":"Curso y Certificación",
             "curso":"Introducción a la Terapia Cognitiva con niños y adolescentes"
         },
         { 
             "instituto":"CEA SALUD 2023",
-            "tipo":"Curso y Certificacion",
+            "tipo":"Curso y Certificación",
             "curso":"Abordaje Cognitivo Conductal en niños y adolescentes"
         },
         {
             "instituto":"UBA 2018",
-            "tipo":"Curso y Certificacion",
+            "tipo":"Curso y Certificación",
             "curso":"Curso Intensivo de acompañamiento terapéutico"
         },
         {
             "instituto":"UBA 2021",
-            "tipo":"Curso y Certificacion",
+            "tipo":"Curso y Certificación",
             "curso":"Curso de Integración escolar"
         },
         {
             "instituto":"FUNDACIÓN FORO 2024",
-            "tipo":"Curso y Certificacion",
+            "tipo":"Curso y Certificación",
             "curso":"Diplomatura en trastornos de Ansiedad "
         },
         {
@@ -98,7 +98,7 @@
         {
             "instituto":"UBA 2022",
             "tipo":"Voluntariados",
-            "curso":"Ayudante de catedrá, materia Teoría y Técnica de Exploración y Diagnóstico II"
+            "curso":"Ayudante de Cátedra, materia Teoría y Técnica de Exploración y Diagnóstico II"
         }
     ]
 }
