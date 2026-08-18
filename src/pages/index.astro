@@ -5,50 +5,133 @@ import CardDos from '../components/CardDos.astro';
 import CardTres from '../components/CardTres.astro';
 import CardCuatro from '../components/CardCuatro.astro';
 import Card from '../components/Card.astro';
+import AquienAtiendo from '../components/AquienAtiendo.astro';
 ---
 
-<Layout title="Bienvenido a VidaPsico">
-	<main>
-		<CardUno />
-		<CardDos />
-		<section>
-			<Card 
-			 svg='/img/Depression.svg'
-			 title='Trastorno de la ansiedad'
-			 body='Ansiedad social, trastorno de pánico, ansiedad de desempeño, fobias específicas'
-			 
-			/>
-			<Card
-			svg='/img/Hug.svg'
-			title='Terapia de Parejas'
-			body='Tratamiento enfocado en el estilo comunicacional, con bases en la compresión y empatía.' 
-			/>
-			<Card 
-			svg='/img/Axiety.svg'
-			title='Terapia de Depresión'
-			body='Tratamiento enfocado en mejorar la calidad de vida y la percepción del si mismo'
-			/>
-		</section>
-		<CardTres />
-		<CardCuatro />
-	</main>
+<Layout
+    title="Psicóloga Online | Terapia Cognitivo Conductual | VidaPsico"
+    description="Terapia psicológica online con la Lic. Rocío Vida (UBA, M.N. 80364). Tratamiento en ansiedad, depresión y parejas desde Buenos Aires para toda Argentina. Agendá tu primera sesión."
+>
+    <main>
+
+        <CardUno />
+        <CardDos />
+        <AquienAtiendo />
+
+        <section class="servicios">
+            <div class="section-head">
+                <span class="pill">Servicios</span>
+                <h2>Áreas de <em>intervención</em></h2>
+                <p>Tratamientos especializados con base en la evidencia</p>
+            </div>
+            <div class="cards-row">
+                <Card
+                    svg='/img/Depression.svg'
+                    title='Trastorno de la ansiedad'
+                    body='Ansiedad social, trastorno de pánico, ansiedad de desempeño, fobias específicas'
+                    href='/terapia/ansiedad/'
+                />
+                <Card
+                    svg='/img/Hug.svg'
+                    title='Terapia de Parejas'
+                    body='Tratamiento enfocado en el estilo comunicacional, con bases en la comprensión y empatía.'
+                    href='/terapia/parejas/'
+                />
+                <Card
+                    svg='/img/Axiety.svg'
+                    title='Terapia de Depresión'
+                    body='Tratamiento enfocado en mejorar la calidad de vida y la percepción del sí mismo'
+                    href='/terapia/depresion/'
+                />
+            </div>
+            <p class="ver-todas">
+                <a href="/areas/">Ver las 9 áreas de intervención →</a>
+            </p>
+        </section>
+
+        <CardTres />
+        <CardCuatro />
+
+    </main>
 </Layout>
 
 <style>
-	section{
-		padding-bottom: 30px;
-		width: 90%;
-		margin: auto;
-		display: flex;
-		justify-content: space-evenly;
-		gap: 15px;
-	}
-	@media (max-width: 900px) {
-		section {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-		}
-	}
+    .servicios {
+        padding: 60px 0 50px;
+    }
+
+    .section-head {
+        text-align: center;
+        margin-bottom: 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pill {
+        display: inline-block;
+        background: #1c584c;
+        color: #8bfd2c;
+        padding: 5px 16px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .section-head h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 200;
+        color: #1a1a1a;
+        line-height: 1.2;
+    }
+
+    .section-head h2 em {
+        font-style: normal;
+        font-weight: 700;
+        color: #1c584c;
+    }
+
+    .section-head p {
+        color: #888;
+        font-size: clamp(14px, 1.3vw, 16px);
+        font-weight: 300;
+    }
+
+    .cards-row {
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .ver-todas {
+        text-align: center;
+        margin-top: 28px;
+    }
+
+    .ver-todas a {
+        color: #1c584c;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .ver-todas a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+        .servicios { padding: 44px 0 36px; }
+        .cards-row {
+            width: 92%;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 </style>

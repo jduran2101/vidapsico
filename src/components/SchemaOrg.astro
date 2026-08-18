@@ -1,0 +1,138 @@
+---
+import { getCollection } from "astro:content";
+import datos from "../data/rocio.json";
+
+const sitio = Astro.site?.origin ?? "https://vidapsico.com.ar";
+
+const servicios = (await getCollection("servicios")).sort(
+	(a, b) => a.data.orden - b.data.orden,
+);
+
+const INSTAGRAM = "https://www.instagram.com/vidapsicoo";
+const EMAIL = "lic.rociovida@gmail.com";
+const TELEFONO = "+5491150471996";
+
+const schema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"@id": `${sitio}/#website`,
+			url: `${sitio}/`,
+			name: "VidaPsico",
+			inLanguage: "es-AR",
+			publisher: { "@id": `${sitio}/#consultorio` },
+		},
+		{
+			"@type": ["Psychologist", "MedicalBusiness"],
+			"@id": `${sitio}/#consultorio`,
+			name: "VidaPsico",
+			description:
+				"Consultorio de psicología online especializado en Terapia Cognitivo-Conductual, a cargo de la Lic. Rocío Ruth Vida.",
+			url: `${sitio}/`,
+			email: EMAIL,
+			telephone: TELEFONO,
+			image: `${sitio}/img/VidaPsicoLogoColor.png`,
+			logo: `${sitio}/img/VidaPsicoLogoColor.png`,
+			founder: { "@id": `${sitio}/#rocio-vida` },
+			employee: { "@id": `${sitio}/#rocio-vida` },
+			sameAs: [INSTAGRAM],
+			areaServed: {
+				"@type": "Country",
+				name: "Argentina",
+			},
+			availableLanguage: {
+				"@type": "Language",
+				name: "Español",
+			},
+			openingHoursSpecification: {
+				"@type": "OpeningHoursSpecification",
+				dayOfWeek: [
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+				],
+				opens: "09:00",
+				closes: "16:00",
+			},
+			hasOfferCatalog: {
+				"@type": "OfferCatalog",
+				name: "Áreas de intervención",
+				itemListElement: servicios.map((servicio) => ({
+					"@type": "Offer",
+					itemOffered: {
+						"@type": "Service",
+						name: servicio.data.titulo,
+						description: servicio.data.resumen.trim(),
+						serviceType: "Psicoterapia online",
+						url: `${sitio}/terapia/${servicio.id}/`,
+						provider: { "@id": `${sitio}/#consultorio` },
+					},
+				})),
+			},
+		},
+		{
+			"@type": "Person",
+			"@id": `${sitio}/#rocio-vida`,
+			name: "Rocío Ruth Vida",
+			givenName: "Rocío Ruth",
+			familyName: "Vida",
+			jobTitle: "Licenciada en Psicología",
+			description:
+				"Licenciada en Psicología por la Universidad de Buenos Aires (M.N. 80364 / M.P. 75688), especializada en Terapia Cognitivo-Conductual y trastornos de ansiedad.",
+			url: `${sitio}/sobremi/`,
+			image: `${sitio}/img/rocio1.webp`,
+			email: EMAIL,
+			telephone: TELEFONO,
+			sameAs: [INSTAGRAM],
+			knowsLanguage: "es-AR",
+			worksFor: { "@id": `${sitio}/#consultorio` },
+			alumniOf: {
+				"@type": "CollegeOrUniversity",
+				name: "Universidad de Buenos Aires",
+				sameAs: "https://www.uba.ar/",
+			},
+			knowsAbout: servicios.map((servicio) => servicio.data.titulo),
+			hasCredential: [
+				{
+					"@type": "EducationalOccupationalCredential",
+					credentialCategory: "license",
+					name: "Matrícula Nacional 80364",
+					recognizedBy: {
+						"@type": "GovernmentOrganization",
+						name: "Ministerio de Salud de la Nación Argentina",
+					},
+				},
+				{
+					"@type": "EducationalOccupationalCredential",
+					credentialCategory: "license",
+					name: "Matrícula Provincial 75688",
+					recognizedBy: {
+						"@type": "GovernmentOrganization",
+						name: "Colegio de Psicólogos de la Provincia de Buenos Aires",
+					},
+				},
+				...datos.cursos
+					.filter((c) => c.tipo === "Curso y Certificación")
+					.map((c) => ({
+						"@type": "EducationalOccupationalCredential",
+						credentialCategory: "certificate",
+						name: c.curso.trim(),
+						recognizedBy: {
+							"@type": "Organization",
+							name: c.instituto,
+						},
+					})),
+			],
+		},
+	],
+};
+---
+
+<script
+	type="application/ld+json"
+	set:html={JSON.stringify(schema)}
+	is:inline
+/>

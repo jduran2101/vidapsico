@@ -5,7 +5,7 @@
 <header>
     <div class="first">
         <div>
-            <img src="/img/VidaPsicoLogoColor.png" alt="" />
+            <img src="/img/VidaPsicoLogoColor.png" alt="VidaPsico — Lic. Rocío Vida, Psicóloga" />
         </div>
         <button class="abrir-menu" id="abrir" aria-label="name">
             <svg
@@ -27,9 +27,10 @@
         </button>
         <nav class="nav" id="nav">
            
-            <a href="/">Home</a>
-            <a href="/sobremi">Sobre mi</a>
-            <a href="/areas">Areas de Terapias</a>
+            <a href="/">Inicio</a>
+            <a href="/sobremi">Sobre mí</a>
+            <a href="/areas">Áreas de Terapia</a>
+            <a href="/contacto">Contacto</a>
         </nav>
     </div>
     <script>
@@ -49,7 +50,7 @@
        /* background-color: #fff; */
         width: 100%;
         height: 90px;
-        background-color: #7fc7af;
+        background-color: #fff;
         margin: 1px auto;
         
         display: flex;
@@ -74,12 +75,12 @@
     .first {
         width: 88%;
         background-color: #f1f1f1;
-        border: 3px solid #7fc7af;
+        border: 3px solid #1c584c;
         border-radius: 20px; 
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px;
+        padding: 5px;
         position: fixed;
         z-index: 100;
         animation: e-header linear both;
@@ -88,7 +89,8 @@
         
     }
     div img {
-        width: 160px;
+        width: 180px;
+        height: 70px;
     }
 
     nav a {
@@ -101,7 +103,7 @@
     }
     nav a:hover {
         border-radius: 20px 40px;
-        background-color: #7fc7af;
+        background-color: #1c584c;
         color: #ffff;
         font-weight: 500;
     }
@@ -134,14 +136,14 @@
             color: #7fc7af;
         }
         nav {
-            padding-top: 60px;
+            padding-top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
             z-index: 100;
             position: absolute;
-            top: 78px;
+            top: 75px;
             width: 100%;
             height: 100vh;
             right: 0;

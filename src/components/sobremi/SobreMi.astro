@@ -31,9 +31,9 @@ import {slide} from "astro:transitions"
                 deciden iniciar con su espacio terapéutico.
             </p>
             <p>
-                Mi labor implica escucha activa, contención y respeto ante las
-                diversas problemáticas, para que juntos transformemos el
-                malestar actual en una realidad más saludable.
+                Ofrezco terapia psicológica basada en la Terapia Cognitivo-Conductual, 
+                un enfoque científico y efectivo para tratar problemas como ansiedad, 
+                depresión, estrés, fobias y dificultades emocionales. Mi objetivo es ayudarte a identificar y cambiar patrones de pensamiento y comportamiento que te limitan, proporcionándote herramientas prácticas para mejorar tu bienestar emocional y calidad de vida.
             </p>
         </div>
     </div>
@@ -58,14 +58,14 @@ import {slide} from "astro:transitions"
         h3 {
             position: relative;
 
-            font-size: 38px;
-            color: #7fc7af;
-            font-weight: 400;
+            font-size: 40px;
+            color: #1c584c;
+            font-weight: 600;
         }
         h1 {
             font-size: 36px;
-            color: #7fc7af;
-            font-weight: 400;
+            color: #1c584c;
+            font-weight: 600;
         }
         h4 {
             color: #3c3b3b;
@@ -98,30 +98,23 @@ import {slide} from "astro:transitions"
 
     .cuerpouno .imagen {
         width: 50%;
+        
         img {
             width: 80%;
             height: 600px;
             clip-path: polygon(11% 0, 100% 0%, 90% 100%, 0% 100%);
+            
         }
     }
     .dos {
         margin: 50px 0;
         width: 100%;
-        background: #348f50; /* fallback for old browsers */
-        background: -webkit-linear-gradient(
-            to right,
-            #56b4d3,
-            #348f50
-        ); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(
-            to right,
-            #56b4d3,
-            #348f50
-        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background-color: #1c584c;
+       
     }
     .info2 {
         width: 70%;
-        height: 400px;
+        height: 475px;
         margin: auto;
         display: flex;
         flex-wrap: wrap;
@@ -133,45 +126,38 @@ import {slide} from "astro:transitions"
         
 
         img {
-            width: 70%;
-            height: 350px;
+            width: 65%;
+            height: auto;
             border-radius: 10px;
             box-shadow: 0 0 35px #e6eee7;
         }
     }
     .perfil {
         border-radius: 15px;
-
         border: 5px double #fff;
+
         /* box-shadow: 10px 10px 0 1px #ceeef8,
         10px 10px 0 0 #fff;*/
-        width: 35%;
-        padding: 25px;
-        clip-path: polygon(
-            0 0,
-            78% 0,
-            100% 21%,
-            100% 70%,
-            100% 100%,
-            21% 100%,
-            0 78%,
-            0% 30%
-        );
+        width: 42%;
+        height: 375px;
+        padding: 10px;
+        
         h3 {
-            font-size: 28px;
+            font-size: 30px;
             color: #fff;
             padding-bottom: 10px;
             text-decoration: underline;
             text-decoration-color: #fff;
             text-decoration-thickness: 3px;
+            text-align: center;
         }
         p {
             color: #fff;
-
-            font-size: 16px;
+            font-size: 18px;
             line-height: 25px;
-            text-align: start;
+            text-align: center;
         }
+
     }
     @media (max-width: 900px) {
         section {
@@ -195,11 +181,12 @@ import {slide} from "astro:transitions"
         }
         .dos {
             margin-top: 30px;
+            height: 900px;
             
         }
         .info2 {
             width: 98%;
-            height: 725px;
+            height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -209,21 +196,21 @@ import {slide} from "astro:transitions"
             
         .info2 .ro {
             width: 320px;
-            
+            padding-top: 10px;
             img {
                width: 100%;
             }
         }
         .info2 .perfil {
             width: 325px;
-            height: 220px;
+            height: 380px;
             text-align: center;
             margin-top: 20px;
             padding: 15px;
         
 
             p {
-                font-size: 14px;
+                font-size: 16px;
                 text-align: center;
             }
         }

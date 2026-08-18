@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/outfit": "^5.0.13",
-    "astro": "^4.10.2"
+    "astro": "^6.0.6"
   }
 }

@@ -1,0 +1,180 @@
+---
+---
+
+<section class="quien">
+
+    <div class="section-head">
+        <span class="pill">Especialidades</span>
+        <h2>¿A quién <em>atiendo?</em></h2>
+        <p>Acompañamiento personalizado para distintas necesidades</p>
+    </div>
+
+    <div class="grid">
+
+        <article class="card">
+            <img src="/img/emprendedores4.webp" alt="Emprendedores" />
+            <div class="overlay">
+                <span class="cat">Emprendedores</span>
+                <p>Supera los desafíos, lidera con éxito y equilibra tu vida personal y profesional.</p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img src="/img/ansiedad6a.webp" alt="Ansiedad social" />
+            <div class="overlay">
+                <span class="cat">Ansiedad Social</span>
+                <p>Supera tus miedos en la vinculación social y potencia tus interacciones.</p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img src="/img/influ22a.webp" alt="Content creator" />
+            <div class="overlay">
+                <span class="cat">Content Creator</span>
+                <p>Maneja la presión con estrategias de psicología para la resiliencia ante las críticas.</p>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<style>
+    .quien {
+        padding: 60px 0 50px;
+    }
+
+    /* ── HEADER ── */
+    .section-head {
+        text-align: center;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pill {
+        display: inline-block;
+        background: #1c584c;
+        color: #8bfd2c;
+        padding: 5px 16px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .section-head h2 {
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 200;
+        color: #1a1a1a;
+        line-height: 1.2;
+    }
+
+    .section-head h2 em {
+        font-style: normal;
+        font-weight: 700;
+        color: #1c584c;
+    }
+
+    .section-head p {
+        color: #888;
+        font-size: clamp(14px, 1.4vw, 16px);
+        font-weight: 300;
+    }
+
+    /* ── GRID ── */
+    .grid {
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    /* ── CARD ── */
+    .card {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        height: 200px;
+        cursor: pointer;
+        animation: revealCard linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 35%;
+    }
+
+    @keyframes revealCard {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.68);
+        transition: transform 500ms ease, filter 500ms ease;
+        will-change: transform;
+    }
+
+    .card:hover img {
+        transform: scale(1.06);
+        filter: brightness(0.55);
+    }
+
+    /* ── OVERLAY ── */
+    .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 48px;
+        background: linear-gradient(
+            90deg,
+            rgba(28,88,76,0.80) 0%,
+            rgba(28,88,76,0.30) 55%,
+            transparent 100%
+        );
+    }
+
+    .cat {
+        color: #8bfd2c;
+        font-size: clamp(17px, 2vw, 24px);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .overlay p {
+        color: rgba(255,255,255,0.88);
+        font-size: clamp(13px, 1.3vw, 15px);
+        font-weight: 300;
+        line-height: 1.55;
+        max-width: 420px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+        .quien { padding: 44px 0 36px; }
+
+        .grid { width: 94%; gap: 10px; }
+
+        .card { height: 175px; }
+
+        .overlay { padding: 0 22px; gap: 6px; }
+
+        .overlay p { max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+        .card { height: 155px; }
+    }
+</style>

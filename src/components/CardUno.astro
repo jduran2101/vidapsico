@@ -1,119 +1,515 @@
 ---
-import { fade } from "astro:transitions"
-import Agendar from "./sobremi/Agendar.astro"
+import { fade } from "astro:transitions";
+import Agendar from "./sobremi/Agendar.astro";
 ---
 
-<section>
-    <div class="cuerpouno">
-        <article transition:animate={fade({duration:"1s"})}class="info">
-            <h1>Trabajemos juntos en <span>tu bienestar</span></h1>
-            <p>Soy Rocio Vida Licenciada en Psicología</p>
-            <p>Si buscas un cambio estás en el lugar correcto...</p>
-            <div class="buton">
+<section class="hero">
+
+    <!-- panel izquierdo — texto -->
+    <div class="hero-left" transition:animate={fade({ duration: "0.7s" })}>
+        <div class="text-col">
+            <span class="eyebrow">Psicóloga · TCC · UBA · Buenos Aires</span>
+            <h1>
+                <span class="line thin">Soy</span>
+                <span class="line bold">Rocío</span>
+                <span class="line bold accent">Vida</span>
+                <span class="line rol">Psicóloga online · Terapia Cognitivo-Conductual</span>
+            </h1>
+            <p class="tagline">"Terapia online: apoyo profesional a un clic de distancia"</p>
+            <div class="ctas">
                 <Agendar />
-                <a href="/sobremi">Sobre mi</a>
+                <a href="/sobremi" class="btn-outline">Sobre mí</a>
+                <a
+                    class="btn-ig"
+                    href="https://www.instagram.com/vidapsicoo?igsh=MWQwazE2bTRodWJ2bw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                >
+                    <svg class="ig-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5.5" ry="5.5" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                        <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                        <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/>
+                    </svg>
+                    <span class="ig-label">Instagram</span>
+                </a>
             </div>
-                
+        </div>
 
-        </article>
-        <article class="img">
-            <img src="/img/img-Inicio1.png" alt="">
-
-        </article>
+        <div class="scroll-indicator" aria-hidden="true">
+            <span>scroll</span>
+            <div class="bar"></div>
+        </div>
     </div>
+
+    <!-- panel derecho — imagen protagonista -->
+    <div class="hero-right">
+        <!-- blob decorativo detrás -->
+        <div class="blob" aria-hidden="true"></div>
+
+        <div class="photo-wrap">
+            <img
+                src="/img/nueva_imagen.png"
+                alt="Rocío Vida - Psicóloga"
+                class="photo-img"
+            />
+
+            <!-- badge flotante sobre la imagen -->
+            <div class="photo-badge">
+                <span class="badge-dot"></span>
+                <span>Sesiones online disponibles</span>
+            </div>
+
+            <!-- stat flotante -->
+            <div class="stat-pill">
+                <strong>+500</strong>
+                <span>pacientes acompañados</span>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 <style>
-    section{
-        margin: 10px 0 50px ;
+    /* ── VARIABLES ── */
+    :root {
+        --g: #1c584c;
+        --lime: #8bfd2c;
+        --light: #f2f9f5;
     }
-    .cuerpouno{
-        width: 90%;
-        margin: auto;
+
+    /* ── HERO CONTAINER ── */
+    .hero {
+        position: relative;
+        height: 100svh;
+        max-height: 100svh;
         display: flex;
-        justify-content: space-between;
+        overflow: hidden;
     }
-    .info {
+
+    /* ═══════════════════════════════
+       PANEL IZQUIERDO — verde oscuro
+    ═══════════════════════════════ */
+    .hero-left {
+        flex: 0 0 46%;
+        background: var(--g);
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding: 40px 5% 40px 6%;
+        overflow: hidden;
+        /* ola curva hacia la derecha */
+        clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%);
+        z-index: 2;
     }
-    .info h1 {
-        font-size: 58px ;
+
+    /* dot-grid sutil */
+    .hero-left::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(139,253,44,0.08) 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* glow interior abajo-derecha */
+    .hero-left::after {
+        content: '';
+        position: absolute;
+        bottom: -15%;
+        right: 0;
+        width: 60%;
+        height: 60%;
+        background: radial-gradient(circle, rgba(139,253,44,0.1) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* ── COLUMNA TEXTO ── */
+    .text-col {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        max-width: 480px;
+    }
+
+    .eyebrow {
+        display: block;
+        color: var(--lime);
+        font-size: clamp(9px, 0.85vw, 11px);
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        opacity: 0;
+        animation: fadeUp 0.5s ease forwards 0.1s;
+    }
+
+    h1 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 14px;
+        line-height: 0.9;
+    }
+
+    .line { display: block; opacity: 0; }
+
+    .thin {
+        color: rgba(255,255,255,0.85);
+        font-size: clamp(28px, 3.8vw, 52px);
         font-weight: 200;
-        padding-bottom: 30px;
-        span {
-            color: #7fc7af;
-        }
+        animation: slideUp 0.65s cubic-bezier(0.16,1,0.3,1) forwards 0.2s;
     }
-    .info p {
-        
-        font-size: 28px;
-        font-weight: 200;
-    }
-    .info .buton {
-        padding-top: 30px;
-        a {
-            padding: 15px 15px;
-            border-radius: 15px;
-            border: 2px solid #7fc7af;
-            color: #7fc7af;
-            background-color: #fff;
-            font-size: 18px;
-            font-weight: 400;
-            margin-right: 15px;
-            transition: .3s all ease-in;
-            cursor: pointer;
-            text-decoration: none;
-        }
-       a:hover {
-        background: linear-gradient(to bottom, rgba(0, 176, 155, 0.5), rgba(150, 201, 61, 1));
+    .bold {
         color: #fff;
-       }
+        font-size: clamp(40px, 5.8vw, 78px);
+        font-weight: 800;
+        animation: slideUp 0.65s cubic-bezier(0.16,1,0.3,1) forwards 0.38s;
     }
-  
-   
-    
-       
-   
-   
- 
+    .accent {
+        color: var(--lime);
+        animation-delay: 0.54s;
+    }
+    .rol {
+        color: rgba(255,255,255,0.9);
+        font-size: clamp(14px, 1.5vw, 20px);
+        font-weight: 300;
+        line-height: 1.4;
+        margin-top: 14px;
+        animation: slideUp 0.65s cubic-bezier(0.16,1,0.3,1) forwards 0.66s;
+    }
 
+    .tagline {
+        color: rgba(255,255,255,0.55);
+        font-size: clamp(12px, 1.1vw, 14px);
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.6;
+        padding-left: 12px;
+        border-left: 2px solid rgba(139,253,44,0.4);
+        margin-bottom: 22px;
+        opacity: 0;
+        animation: fadeUp 0.5s ease forwards 0.7s;
+    }
 
+    .ctas {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeUp 0.5s ease forwards 0.88s;
+    }
 
+    /* botón outline */
+    .btn-outline {
+        display: inline-block;
+        padding: 13px 26px;
+        border-radius: 12px;
+        color: #fff;
+        background: transparent;
+        border: 2px solid rgba(255,255,255,0.28);
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        white-space: nowrap;
+    }
+    .btn-outline:hover {
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.55);
+        transform: translateY(-2px);
+    }
 
-	
-    @media (max-width: 900px){
-        section {
-            margin: 10px 0 50px 0;
-        }
-        .cuerpouno {
-            width: 98%;
-            display: flex;
+    /* botón Instagram */
+    .btn-ig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px 11px 14px;
+        border-radius: 12px;
+        border: 1.5px solid rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.06);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        text-decoration: none;
+        color: rgba(255,255,255,0.85);
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        transition: color 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .btn-ig::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+    }
+    .btn-ig:hover::before { opacity: 1; }
+    .btn-ig:hover {
+        border-color: transparent;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(238,42,123,0.38);
+    }
+    .ig-icon { width: 20px; height: 20px; flex-shrink: 0; position: relative; z-index: 1; }
+    .ig-label { position: relative; z-index: 1; }
+
+    /* scroll indicator */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 7px;
+        z-index: 3;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 1.6s;
+    }
+    .scroll-indicator span {
+        color: rgba(255,255,255,0.3);
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+    }
+    .bar {
+        width: 1px;
+        height: 36px;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+        animation: barDrop 2s ease-in-out infinite;
+    }
+    @keyframes barDrop {
+        0%, 100% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+        40%, 60%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    }
+
+    /* ═══════════════════════════════
+       PANEL DERECHO — imagen principal
+    ═══════════════════════════════ */
+    .hero-right {
+        flex: 1;
+        background: var(--light);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 3% 20px 5%;
+        /* gradiente atmosférico */
+        background-image:
+            radial-gradient(circle at 75% 15%, rgba(139,253,44,0.13) 0%, transparent 50%),
+            radial-gradient(circle at 25% 85%, rgba(28,88,76,0.07) 0%, transparent 50%);
+    }
+
+    /* blob orgánico decorativo detrás de la imagen */
+    .blob {
+        position: absolute;
+        width: 75%;
+        height: 75%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle, rgba(139,253,44,0.12) 0%, transparent 65%);
+        border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+        animation: blobFloat 7s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+    }
+    @keyframes blobFloat {
+        0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; transform: translate(-50%, -50%) scale(1); }
+        50%       { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; transform: translate(-50%, -52%) scale(1.03); }
+    }
+
+    /* contenedor imagen + elementos flotantes */
+    .photo-wrap {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 460px;
+        max-height: 90vh;
+        opacity: 0;
+        animation: heroImageIn 1s cubic-bezier(0.16,1,0.3,1) forwards 0.35s;
+    }
+
+    @keyframes heroImageIn {
+        from { opacity: 0; transform: translateY(30px) scale(0.97); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* imagen — protagonista absoluta */
+    .photo-img {
+        width: 100%;
+        height: 100%;
+        max-height: 88vh;
+        object-fit: contain;
+        display: block;
+        filter: drop-shadow(0 24px 60px rgba(28,88,76,0.2));
+        transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.5s ease;
+    }
+    .photo-wrap:hover .photo-img {
+        transform: translateY(-8px) scale(1.015);
+        filter: drop-shadow(0 36px 72px rgba(28,88,76,0.28));
+    }
+
+    /* ── badge "sesiones online" — flotante inferior izquierdo ── */
+    .photo-badge {
+        position: absolute;
+        bottom: 8%;
+        left: -12%;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: #fff;
+        border: 1px solid rgba(28,88,76,0.12);
+        box-shadow: 0 8px 28px rgba(28,88,76,0.14);
+        border-radius: 24px;
+        padding: 10px 20px;
+        color: #1c584c;
+        font-size: 13px;
+        font-weight: 500;
+        white-space: nowrap;
+        animation: floatCard 4s ease-in-out infinite;
+    }
+    @keyframes floatCard {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-6px); }
+    }
+
+    .badge-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--lime);
+        flex-shrink: 0;
+        box-shadow: 0 0 0 3px rgba(139,253,44,0.28);
+        animation: dotPulse 2s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+        0%, 100% { box-shadow: 0 0 0 3px rgba(139,253,44,0.28); }
+        50%       { box-shadow: 0 0 0 7px rgba(139,253,44,0.06); }
+    }
+
+    /* ── stat pill — flotante superior derecho ── */
+    .stat-pill {
+        position: absolute;
+        top: 10%;
+        right: -8%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--g);
+        border-radius: 20px;
+        padding: 14px 20px;
+        box-shadow: 0 8px 28px rgba(28,88,76,0.25);
+        animation: floatCard 4s ease-in-out infinite 2s;
+    }
+    .stat-pill strong {
+        color: var(--lime);
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1;
+    }
+    .stat-pill span {
+        color: rgba(255,255,255,0.65);
+        font-size: 11px;
+        font-weight: 400;
+        text-align: center;
+        margin-top: 3px;
+        max-width: 90px;
+        line-height: 1.3;
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(32px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+    @media (max-width: 960px) {
+        .hero {
             flex-direction: column;
-            align-items: center;
+            height: auto;
+            min-height: 100svh;
+            max-height: none;
         }
-        .img {
-           order: -1;
-           img {
+
+        /* imagen va PRIMERO en mobile */
+        .hero-right {
+            order: -1;
+            flex: none;
             width: 100%;
-            mask-image: linear-gradient(black 90%, transparent);
-           }
-        }
-        .info {
+            padding: 28px 5% 12px;
             display: flex;
+            align-items: center;
             justify-content: center;
+        }
+
+        /* imagen ocupa ~90% del ancho de pantalla */
+        .photo-wrap {
+            width: 90%;
+            max-width: 90vw;
+            max-height: none;
+        }
+        .photo-img { max-height: none; }
+
+        /* pills flotantes reposicionados */
+        .photo-badge { left: 0; bottom: -4%; font-size: 11px; padding: 7px 13px; }
+        .stat-pill   { right: 0; top: -2%; padding: 9px 13px; }
+        .stat-pill strong { font-size: 16px; }
+
+        /* panel texto compacto abajo */
+        .hero-left {
+            flex: none;
+            clip-path: none;
+            padding: 20px 6% 36px;
             align-items: center;
         }
-        .info h1 {
-            font-size: 38px;
+        .text-col {
+            align-items: center;
             text-align: center;
+            max-width: 100%;
         }
-        .info p {
-            font-size: 23px;
+        .tagline {
+            border-left: none;
+            border-top: 2px solid rgba(139,253,44,0.4);
+            padding-left: 0;
+            padding-top: 10px;
             text-align: center;
+            margin: 0 auto 18px;
+            max-width: 380px;
         }
-            
-            
+        .ctas { justify-content: center; }
+        .scroll-indicator { display: none; }
+    }
+
+    @media (max-width: 480px) {
+        .hero-left { padding: 16px 5% 32px; }
+        .eyebrow { margin-bottom: 8px; }
+        h1 { margin-bottom: 10px; }
+        .ctas { gap: 8px; }
+        .btn-outline { padding: 11px 18px; font-size: 13px; }
+        .btn-ig { padding: 10px 12px; }
+        .ig-label { display: none; }
+        .photo-badge { display: none; }
+        .stat-pill   { display: none; }
     }
 </style>

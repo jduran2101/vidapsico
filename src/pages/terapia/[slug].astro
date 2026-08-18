@@ -1,0 +1,443 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+	const servicios = await getCollection("servicios");
+	return servicios.map((servicio) => ({
+		params: { slug: servicio.id },
+		props: { servicio },
+	}));
+}
+
+const { servicio } = Astro.props;
+const { Content } = await render(servicio);
+
+const sitio = Astro.site?.origin ?? "https://vidapsico.com.ar";
+const urlPagina = new URL(Astro.url.pathname, Astro.site).href;
+
+const otros = (await getCollection("servicios"))
+	.filter((s) => s.id !== servicio.id)
+	.sort((a, b) => a.data.orden - b.data.orden)
+	.slice(0, 4);
+
+const schemaPagina = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "MedicalWebPage",
+			"@id": `${urlPagina}#pagina`,
+			url: urlPagina,
+			name: servicio.data.h1,
+			description: servicio.data.seoDescription,
+			inLanguage: "es-AR",
+			about: {
+				"@type": "MedicalCondition",
+				name: servicio.data.titulo,
+			},
+			author: { "@id": `${sitio}/#rocio-vida` },
+			reviewedBy: { "@id": `${sitio}/#rocio-vida` },
+			isPartOf: { "@id": `${sitio}/#website` },
+			breadcrumb: { "@id": `${urlPagina}#breadcrumb` },
+		},
+		{
+			"@type": "BreadcrumbList",
+			"@id": `${urlPagina}#breadcrumb`,
+			itemListElement: [
+				{
+					"@type": "ListItem",
+					position: 1,
+					name: "Inicio",
+					item: `${sitio}/`,
+				},
+				{
+					"@type": "ListItem",
+					position: 2,
+					name: "Áreas de Terapia",
+					item: `${sitio}/areas/`,
+				},
+				{
+					"@type": "ListItem",
+					position: 3,
+					name: servicio.data.titulo,
+					item: urlPagina,
+				},
+			],
+		},
+		...(servicio.data.faq.length
+			? [
+					{
+						"@type": "FAQPage",
+						"@id": `${urlPagina}#faq`,
+						mainEntity: servicio.data.faq.map((f) => ({
+							"@type": "Question",
+							name: f.pregunta,
+							acceptedAnswer: {
+								"@type": "Answer",
+								text: f.respuesta,
+							},
+						})),
+					},
+				]
+			: []),
+	],
+};
+---
+
+<Layout
+	title={servicio.data.seoTitle}
+	description={servicio.data.seoDescription}
+	image={servicio.data.imagen}
+>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(schemaPagina)}
+		is:inline
+	/>
+
+	<main>
+		<article class="servicio">
+			<nav class="miga" aria-label="Ruta de navegación">
+				<a href="/">Inicio</a>
+				<span aria-hidden="true">›</span>
+				<a href="/areas/">Áreas de Terapia</a>
+				<span aria-hidden="true">›</span>
+				<span class="actual">{servicio.data.titulo}</span>
+			</nav>
+
+			<header class="cabecera">
+				<span class="pill">{servicio.data.titulo}</span>
+				<h1>{servicio.data.h1}</h1>
+				<p class="firma">
+					Por la <a href="/sobremi/">Lic. Rocío Ruth Vida</a>, Psicóloga
+					(UBA). M.N. 80364 / M.P. 75688
+				</p>
+			</header>
+
+			<div class="cuerpo-texto">
+				<Content />
+			</div>
+
+			{
+				servicio.data.faq.length > 0 && (
+					<section class="faq">
+						<h2>Preguntas frecuentes</h2>
+						{servicio.data.faq.map((f) => (
+							<details>
+								<summary>{f.pregunta}</summary>
+								<p>{f.respuesta}</p>
+							</details>
+						))}
+					</section>
+				)
+			}
+
+			<section class="cta">
+				<h2>¿Querés consultar por este espacio?</h2>
+				<p>
+					Podés escribirme para coordinar una primera entrevista. Atiendo
+					de lunes a viernes de 09 a 16 hs, por videollamada, para
+					consultantes de toda Argentina.
+				</p>
+				<div class="cta-botones">
+					<a
+						class="btn-primario"
+						href="https://wa.me/5491150471996?text=Hola... me gustaria agendar una cita"
+						target="_blank"
+						rel="noopener noreferrer">Escribir por WhatsApp</a
+					>
+					<a class="btn-secundario" href="/contacto/">Ver todos los contactos</a>
+				</div>
+			</section>
+
+			<section class="otros">
+				<h2>Otras áreas de intervención</h2>
+				<ul>
+					{
+						otros.map((s) => (
+							<li>
+								<a href={`/terapia/${s.id}/`}>
+									<strong>{s.data.titulo}</strong>
+									<span>{s.data.resumen}</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+				<a class="ver-todas" href="/areas/">Ver todas las áreas</a>
+			</section>
+		</article>
+	</main>
+</Layout>
+
+<style>
+	.servicio {
+		width: 90%;
+		max-width: 780px;
+		margin: 0 auto;
+		padding: 40px 0 60px;
+	}
+
+	.miga {
+		font-size: 13px;
+		color: #888;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-bottom: 28px;
+	}
+
+	.miga a {
+		color: #1c584c;
+		text-decoration: none;
+	}
+
+	.miga a:hover {
+		text-decoration: underline;
+	}
+
+	.miga .actual {
+		color: #888;
+	}
+
+	.cabecera {
+		margin-bottom: 36px;
+		padding-bottom: 28px;
+		border-bottom: 2px solid #e2ded6;
+	}
+
+	.pill {
+		display: inline-block;
+		background: #1c584c;
+		color: #8bfd2c;
+		padding: 5px 16px;
+		border-radius: 20px;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		margin-bottom: 16px;
+	}
+
+	.cabecera h1 {
+		font-size: clamp(26px, 3.6vw, 38px);
+		font-weight: 300;
+		color: #1a1a1a;
+		line-height: 1.25;
+		margin-bottom: 14px;
+	}
+
+	.firma {
+		font-size: 14px;
+		color: #777;
+		font-weight: 300;
+	}
+
+	.firma a {
+		color: #1c584c;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.cuerpo-texto :global(p) {
+		font-size: 17px;
+		line-height: 1.75;
+		color: #3c3b3b;
+		font-weight: 300;
+		margin-bottom: 18px;
+	}
+
+	.cuerpo-texto :global(h2) {
+		font-size: 24px;
+		font-weight: 700;
+		color: #1c584c;
+		margin-top: 42px;
+		margin-bottom: 16px;
+		line-height: 1.3;
+	}
+
+	.cuerpo-texto :global(ul),
+	.cuerpo-texto :global(ol) {
+		margin: 0 0 20px;
+		padding-left: 22px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.cuerpo-texto :global(li) {
+		font-size: 17px;
+		line-height: 1.7;
+		color: #3c3b3b;
+		font-weight: 300;
+	}
+
+	.cuerpo-texto :global(strong) {
+		font-weight: 600;
+		color: #1a1a1a;
+	}
+
+	.cuerpo-texto :global(a) {
+		color: #1c584c;
+		font-weight: 500;
+	}
+
+	.faq {
+		margin-top: 50px;
+		padding-top: 36px;
+		border-top: 2px solid #e2ded6;
+	}
+
+	.faq h2,
+	.cta h2,
+	.otros h2 {
+		font-size: 24px;
+		font-weight: 700;
+		color: #1c584c;
+		margin-bottom: 20px;
+	}
+
+	.faq details {
+		background: #fff;
+		border-radius: 12px;
+		padding: 16px 20px;
+		margin-bottom: 12px;
+	}
+
+	.faq summary {
+		font-size: 17px;
+		font-weight: 500;
+		color: #1a1a1a;
+		cursor: pointer;
+		line-height: 1.5;
+	}
+
+	.faq details p {
+		font-size: 16px;
+		font-weight: 300;
+		line-height: 1.7;
+		color: #3c3b3b;
+		margin-top: 12px;
+	}
+
+	.cta {
+		margin-top: 50px;
+		background: #1c584c;
+		border-radius: 18px;
+		padding: 34px 32px;
+	}
+
+	.cta h2 {
+		color: #fff;
+	}
+
+	.cta p {
+		color: #d9e8e3;
+		font-size: 16px;
+		font-weight: 300;
+		line-height: 1.7;
+		margin-bottom: 24px;
+	}
+
+	.cta-botones {
+		display: flex;
+		gap: 14px;
+		flex-wrap: wrap;
+	}
+
+	.btn-primario,
+	.btn-secundario {
+		padding: 13px 24px;
+		border-radius: 14px;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: 0.2s all ease-in;
+	}
+
+	.btn-primario {
+		background: #8bfd2c;
+		color: #1c584c;
+	}
+
+	.btn-primario:hover {
+		background: #fff;
+	}
+
+	.btn-secundario {
+		border: 2px solid #7fc7af;
+		color: #fff;
+	}
+
+	.btn-secundario:hover {
+		background: #7fc7af;
+		color: #1c584c;
+	}
+
+	.otros {
+		margin-top: 50px;
+	}
+
+	.otros ul {
+		list-style: none;
+		margin: 0 0 22px;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
+	}
+
+	.otros a {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		background: #fff;
+		border-radius: 14px;
+		padding: 18px 20px;
+		text-decoration: none;
+		height: 100%;
+		transition: 0.2s all ease-in;
+	}
+
+	.otros a:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 8px 20px rgba(28, 88, 76, 0.15);
+	}
+
+	.otros strong {
+		color: #1c584c;
+		font-size: 17px;
+		font-weight: 600;
+	}
+
+	.otros span {
+		color: #777;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1.5;
+	}
+
+	.ver-todas {
+		color: #1c584c;
+		font-weight: 500;
+		text-decoration: none;
+		font-size: 16px;
+	}
+
+	.ver-todas:hover {
+		text-decoration: underline;
+	}
+
+	@media (max-width: 900px) {
+		.servicio {
+			width: 92%;
+			padding: 28px 0 44px;
+		}
+		.otros ul {
+			grid-template-columns: 1fr;
+		}
+		.cta {
+			padding: 26px 22px;
+		}
+	}
+</style>

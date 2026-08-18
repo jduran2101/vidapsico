@@ -1,0 +1,14 @@
+# Canonicalización de dominio para VidaPsico (Hostinger / Apache)
+# Unifica todo el tráfico en https://vidapsico.com.ar (sin www).
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Forzar HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^(.*)$ https://vidapsico.com.ar/$1 [R=301,L]
+
+    # Forzar dominio sin www
+    RewriteCond %{HTTP_HOST} ^www\.vidapsico\.com\.ar$ [NC]
+    RewriteRule ^(.*)$ https://vidapsico.com.ar/$1 [R=301,L]
+</IfModule>

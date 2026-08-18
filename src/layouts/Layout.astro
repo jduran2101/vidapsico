@@ -1,38 +1,57 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Whastapp from "../components/Whastapp.astro";
+import SchemaOrg from "../components/SchemaOrg.astro";
 import "@fontsource-variable/outfit";
 
 interface Props {
 	title: string;
+	description: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, image = "/img/nueva_imagen.png" } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imagenSocial = new URL(image, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es-AR">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Psicóloga UBA, especializada en ANSIEDAD y diversidad de
-		                                  problematicas actuales, clínica de adultos, niños y adolescentes.
-										  Psicoterapia de perspectiva TCC, consultas online/presencial." />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/PsicoVida.png" />
-		<meta name="generator" content={Astro.generator} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
-		<ViewTransitions />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<link rel="icon" type="image/png" href="/PsicoVida.png" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="VidaPsico" />
+		<meta property="og:locale" content="es_AR" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imagenSocial} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imagenSocial} />
+
+		<SchemaOrg />
+		<ClientRouter />
 	</head>
-	<div class="cuerpo">
-		<Header />
-		<body>
+	<body>
+		<div class="cuerpo">
+			<Header />
 			<slot />
-		</body>
-		<Whastapp />
-		<Footer />
-	</div>
+			<Whastapp />
+			<Footer />
+		</div>
+	</body>
 </html>
 <style is:global>
 	html {
@@ -43,7 +62,7 @@ const { title } = Astro.props;
 		padding: 0;
 		margin: 0;
 		box-sizing: border-box;
-		background-color: #e5e7eb;
+		background-color: #f5f2ed;
 	}
 
 	.cuerpo {

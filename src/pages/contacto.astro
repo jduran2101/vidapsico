@@ -1,0 +1,221 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+    title="Contacto | Lic. Rocío Vida — Psicóloga Online"
+    description="Contactá a la Lic. Rocío Ruth Vida (M.N. 80364 / M.P. 75688) para agendar una sesión de terapia online. Consultas por WhatsApp o email, de lunes a viernes de 09 a 16 hs."
+>
+    <main>
+        <section class="contacto">
+            <div class="section-head">
+                <span class="pill">Contacto</span>
+                <h1>Agendá tu <em>primera sesión</em></h1>
+                <p>
+                    Escribime por el canal que te resulte más cómodo. Respondo
+                    personalmente de lunes a viernes de 09 a 16 hs.
+                </p>
+            </div>
+
+            <div class="canales">
+                <a
+                    class="canal"
+                    href="https://wa.me/5491150471996?text=Hola... me gustaria agendar una cita"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <h2>WhatsApp</h2>
+                    <p>La vía más rápida para coordinar día y horario.</p>
+                    <span class="dato">+54 9 11 5047-1996</span>
+                </a>
+
+                <a class="canal" href="mailto:lic.rociovida@gmail.com">
+                    <h2>Email</h2>
+                    <p>Para consultas más extensas o derivaciones profesionales.</p>
+                    <span class="dato">lic.rociovida@gmail.com</span>
+                </a>
+
+                <a
+                    class="canal"
+                    href="https://www.instagram.com/vidapsicoo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <h2>Instagram</h2>
+                    <p>Contenido sobre salud mental y bienestar emocional.</p>
+                    <span class="dato">@vidapsicoo</span>
+                </a>
+            </div>
+
+            <div class="datos-profesionales">
+                <h2>Datos profesionales</h2>
+                <ul>
+                    <li>
+                        <strong>Lic. Rocío Ruth Vida</strong> — Licenciada en
+                        Psicología, Universidad de Buenos Aires
+                    </li>
+                    <li>Matrícula Nacional 80364</li>
+                    <li>Matrícula Provincial 75688</li>
+                    <li>
+                        Modalidad: sesiones online por videollamada, para
+                        consultantes de toda Argentina
+                    </li>
+                    <li>Horario de atención: lunes a viernes de 09 a 16 hs</li>
+                </ul>
+            </div>
+
+            <p class="aviso">
+                Este espacio no brinda atención de urgencias. Si estás
+                atravesando una emergencia o una crisis, comunicate con el
+                <strong>135</strong> (línea gratuita de asistencia al suicidio,
+                CABA y GBA), al <strong>(011) 5275-1135</strong> desde el resto
+                del país, o acercate a la guardia del hospital más cercano.
+            </p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .contacto {
+        padding: 60px 0 50px;
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .section-head {
+        text-align: center;
+        margin-bottom: 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pill {
+        display: inline-block;
+        background: #1c584c;
+        color: #8bfd2c;
+        padding: 5px 16px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .section-head h1 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 200;
+        color: #1a1a1a;
+        line-height: 1.2;
+    }
+
+    .section-head h1 em {
+        font-style: normal;
+        font-weight: 700;
+        color: #1c584c;
+    }
+
+    .section-head > p {
+        color: #888;
+        font-size: clamp(14px, 1.3vw, 16px);
+        font-weight: 300;
+        max-width: 560px;
+    }
+
+    .canales {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+    }
+
+    .canal {
+        flex: 1 1 280px;
+        max-width: 340px;
+        background: #fff;
+        border: 2px solid #1c584c;
+        border-radius: 18px;
+        padding: 26px 24px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        transition: 0.2s all ease-in;
+    }
+
+    .canal:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(28, 88, 76, 0.18);
+    }
+
+    .canal h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1c584c;
+    }
+
+    .canal p {
+        font-size: 15px;
+        font-weight: 300;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    .canal .dato {
+        margin-top: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #3c3b3b;
+    }
+
+    .datos-profesionales {
+        background: #fff;
+        border-radius: 18px;
+        padding: 28px 30px;
+        margin-bottom: 30px;
+    }
+
+    .datos-profesionales h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1c584c;
+        margin-bottom: 14px;
+    }
+
+    .datos-profesionales ul {
+        margin: 0;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .datos-profesionales li {
+        font-size: 16px;
+        font-weight: 300;
+        color: #3c3b3b;
+        line-height: 1.5;
+    }
+
+    .aviso {
+        font-size: 15px;
+        font-weight: 300;
+        color: #666;
+        line-height: 1.6;
+        border-left: 4px solid #7fc7af;
+        padding: 4px 0 4px 16px;
+    }
+
+    @media (max-width: 900px) {
+        .contacto {
+            padding: 44px 0 36px;
+            width: 92%;
+        }
+        .canal {
+            max-width: none;
+        }
+    }
+</style>

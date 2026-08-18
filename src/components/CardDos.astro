@@ -1,66 +1,189 @@
 ---
 ---
 
-<section>
-    <div class="info">
-        <h3><span>Un espacio</span> de confianza</h3>
-        <p>Compromiso ético y profesional con cada uno de mis pacientes.<br>
-           Mi labor es colaborar en la compresión y solución de problemas,
-           promover el alcance de objetivos.<br>
-           Favorecer la salud mental y la reducción síntomas, mejorando la 
-           calidad de vida.
-           
-        </p>
+<section class="trust">
+    <div class="inner">
+
+        <div class="split">
+            <div class="heading-block">
+                <span class="label">Mi compromiso</span>
+                <h2>Un espacio<br/><em>de confianza</em></h2>
+            </div>
+            <div class="body-block">
+                <p>
+                    Compromiso ético y profesional con cada uno de mis pacientes.
+                    Mi labor es colaborar en la comprensión y solución de problemas,
+                    promover el alcance de objetivos.
+                </p>
+                <p>
+                    Favorecer la salud mental y la reducción de síntomas, mejorando
+                    la calidad de vida.
+                </p>
+            </div>
+        </div>
+
+        <div class="badges">
+            <div class="badge">
+                <strong>TCC</strong>
+                <span>Terapia Cognitiva Conductual</span>
+            </div>
+            <div class="sep"></div>
+            <div class="badge">
+                <strong>Online</strong>
+                <span>Sesiones por videollamada</span>
+            </div>
+            <div class="sep"></div>
+            <div class="badge">
+                <strong>UBA</strong>
+                <span>Licenciada en Psicología</span>
+            </div>
+        </div>
+
     </div>
 </section>
 
-
 <style>
-    section {
-        margin: 35px 0;
+    .trust {
+        padding: 72px 0 60px;
     }
-    .info {
+
+    .inner {
         width: 90%;
-        margin: auto;
+        max-width: 1100px;
+        margin: 0 auto;
         display: flex;
-        gap: 50px;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    /* ── SPLIT ── */
+    .split {
+        display: flex;
+        gap: 56px;
+        align-items: flex-start;
+    }
+
+    .heading-block {
+        flex: 0 0 42%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-right: 40px;
+        border-right: 3px solid #1c584c;
+    }
+
+    .label {
+        color: #1c584c;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .heading-block h2 {
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 200;
+        line-height: 1.2;
+        color: #1a1a1a;
+    }
+
+    .heading-block h2 em {
+        font-style: normal;
+        font-weight: 700;
+        color: #1c584c;
+    }
+
+    .body-block {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding-top: 6px;
+    }
+
+    .body-block p {
+        font-size: clamp(16px, 1.6vw, 18px);
+        font-weight: 300;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    /* ── BADGES ── */
+    .badges {
+        display: flex;
         align-items: center;
+        background: #1c584c;
+        border-radius: 18px;
+        overflow: hidden;
     }
-    .info h3  {
-        width: 40%;
-        font-size: 48px;
+
+    .badge {
+        flex: 1;
+        padding: 22px 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .badge strong {
+        color: #8bfd2c;
+        font-size: clamp(18px, 2vw, 24px);
+        font-weight: 700;
+    }
+
+    .badge span {
+        color: rgba(255,255,255,0.65);
+        font-size: clamp(11px, 1.1vw, 13px);
         text-align: center;
-        font-weight: 200;
-        span {
-            color: #7fc7af;
-        }
+        line-height: 1.4;
     }
-        
-    .info p {
-        font-size: 19px;
-        font-weight: 200;
+
+    .sep {
+        width: 1px;
+        height: 44px;
+        background: rgba(255,255,255,0.14);
+        flex-shrink: 0;
     }
+
+    /* ── MOBILE ── */
     @media (max-width: 900px) {
-        .info {
-            width: 98%;
-            display: flex;
-            gap: 20px;
+        .trust { padding: 50px 0 44px; }
+
+        .inner { width: 92%; gap: 36px; }
+
+        .split {
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            gap: 24px;
         }
-        .info h3 {
-            width: 95%;
-            font-size: 36px;
-            
+
+        .heading-block {
+            flex: unset;
+            width: 100%;
+            padding-right: 0;
+            padding-bottom: 20px;
+            border-right: none;
+            border-bottom: 3px solid #1c584c;
         }
-        .info p {
-            font-size: 18px;
-            width: 90%;
-           
-            
-            
+
+        .badges {
+            flex-direction: column;
+            border-radius: 14px;
+            width: 100%;
         }
+
+        .badge {
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 14px;
+            padding: 16px 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .badge strong { font-size: 18px; flex-shrink: 0; }
+        .badge span   { font-size: 13px; }
+
+        .sep { width: 80%; height: 1px; }
     }
 </style>

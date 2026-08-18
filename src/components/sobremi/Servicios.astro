@@ -1,15 +1,28 @@
 ---
-import {servicios} from "../../data/rocio.json"
+import { getCollection } from "astro:content";
+
+const servicios = (await getCollection("servicios")).sort(
+    (a, b) => a.data.orden - b.data.orden,
+);
 ---
 
 {
-    servicios.map(uno => 
+    servicios.map(uno =>
         <article class="area">
-             <img src={uno.imagen} alt="">
-                 <div class="descripcion">
-                    <h2>{uno.titulo}</h2>
-                    <p> {uno.descripcion}</p>
-                </div>   
+            <a href={`/terapia/${uno.id}/`}>
+                <img
+                    src={uno.data.imagen}
+                    alt={`Terapia online: ${uno.data.titulo}`}
+                    loading="lazy"
+                    width="320"
+                    height="400"
+                />
+                <div class="descripcion">
+                    <h2>{uno.data.titulo}</h2>
+                    <p>{uno.data.resumen}</p>
+                    <span class="ver-mas">Ver más</span>
+                </div>
+            </a>
         </article>
     )
 }
@@ -44,6 +57,16 @@ import {servicios} from "../../data/rocio.json"
 
 
 
+  .area a {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-decoration: none;
+  }
   .area img {
     width: 100%;
     height: 100%;
@@ -56,13 +79,24 @@ import {servicios} from "../../data/rocio.json"
     position: relative;
     z-index: 3;
     color:#fff;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.5 all;
+    transform: translateY(0);
+    transition: 0.5s all;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   }
   .area:hover .descripcion {
-    opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(-6px);
+  }
+  .area .ver-mas {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 6px 18px;
+    width: fit-content;
+    margin: 0 auto;
   }
   .area .descripcion p  {
     font-size: 18px;
@@ -90,12 +124,12 @@ import {servicios} from "../../data/rocio.json"
     display: block;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 176, 155, 0.5), rgba(150, 201, 61, 1));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 30%, rgba(28, 88, 76, 0.9));
     z-index: 2;
     transition: 0.5s all;
-    opacity: 0;
+    opacity: 1;
   }
   .area:hover:before {
-    opacity: 1;
+    background: linear-gradient(to bottom, rgba(0, 176, 155, 0.5), rgba(150, 201, 61, 1));
   }
 </style>
